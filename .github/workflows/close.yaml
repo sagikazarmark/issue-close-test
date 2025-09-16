@@ -17,3 +17,5 @@ jobs:
           verb: call
           args: handle --name $GITHUB_EVENT_NAME --event $GITHUB_EVENT_PATH --token env:GITHUB_TOKEN
           version: ${{ env.DAGGER_VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
