@@ -44,9 +44,9 @@ func (m *Test) Handle(ctx context.Context, name string, event *dagger.File, toke
 		return errors.New("unauthorized user: this incident will be reported")
 	}
 
-	fmt.Print("START", e.GetComment().GetBody(), "END")
+	// fmt.Print("START", e.GetComment().GetBody(), "END")
 
-	if e.GetComment().GetBody() != "/close\n" {
+	if e.GetComment().GetBody() != "/close" {
 		return nil
 	}
 
@@ -56,6 +56,13 @@ func (m *Test) Handle(ctx context.Context, name string, event *dagger.File, toke
 	}
 
 	client := github.NewClient(nil).WithAuthToken(tokenString)
+
+	_, _, err = client.Issues.CreateComment(ctx, e.GetRepo().GetOwner().GetLogin(), e.GetRepo().GetName(), e.GetIssue().GetNumber(), &github.IssueComment{
+		Body: github.Ptr("Closing issue (requested by @" + e.GetComment().GetUser().GetLogin() + ")"),
+	})
+	if err != nil {
+		return err
+	}
 
 	_, _, err = client.Issues.Edit(ctx, e.GetRepo().GetOwner().GetLogin(), e.GetRepo().GetName(), e.GetIssue().GetNumber(), &github.IssueRequest{
 		State: github.Ptr("closed"),
