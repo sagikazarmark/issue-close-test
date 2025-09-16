@@ -3,6 +3,9 @@ on: issue_comment
 env:
   DAGGER_VERSION: 0.18.18
 
+permissions:
+  issues: write
+
 jobs:
   handle:
     name: Handle event
