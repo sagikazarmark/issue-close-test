@@ -46,7 +46,7 @@ func (m *Test) Handle(ctx context.Context, name string, event *dagger.File, toke
 
 	fmt.Print("START", e.GetComment().GetBody(), "END")
 
-	if e.GetComment().GetBody() != "/close" {
+	if e.GetComment().GetBody() != "/close\n" {
 		return nil
 	}
 
