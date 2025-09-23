@@ -1,5 +1,5 @@
 permit(
 	principal in Role::"Collaborator",
-	action,
+	action == [Action::"close", Action::"label", Action::"remove-label"],
 	resource
 );
