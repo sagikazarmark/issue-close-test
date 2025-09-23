@@ -1,5 +1,5 @@
 permit(
 	principal in Role::"Collaborator",
-	action
+	action,
 	resource
 );
