@@ -21,3 +21,5 @@ jobs:
 
       - name: Run octoslash
         run: octoslash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
