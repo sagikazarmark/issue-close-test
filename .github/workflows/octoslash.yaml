@@ -8,15 +8,18 @@ jobs:
     name: Handle event
     runs-on: ubuntu-latest
     steps:
-      - name: Install octoslash
-        uses: sigoden/install-binary@7eb4b088aedf19fe9b2bc6c6bbdc12379ffb355c # v1.2.0
-        with:
-          repo: sagikazarmark/octoslash
+      # - name: Install octoslash
+      #   uses: sigoden/install-binary@7eb4b088aedf19fe9b2bc6c6bbdc12379ffb355c # v1.2.0
+      #   with:
+      #     repo: sagikazarmark/octoslash
 
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Run octoslash
-        run: octoslash
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      # - name: Run octoslash
+      #   run: octoslash
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Octoslash
+        uses: sagikazarmark/octoslash/action@v0.0.5
