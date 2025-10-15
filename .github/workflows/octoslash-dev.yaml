@@ -18,7 +18,7 @@ jobs:
         with:
           go-version: "1.25"
 
-      - run: go install github.com/sagikazarmark/octoslash@workflow-run
+      - run: go install github.com/sagikazarmark/octoslash/cmd/octoslash@workflow-run
 
       - name: Run octoslash
         run: octoslash
