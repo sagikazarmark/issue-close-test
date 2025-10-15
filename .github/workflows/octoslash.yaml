@@ -16,3 +16,5 @@ jobs:
 
       - name: Octoslash
         uses: sagikazarmark/octoslash-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

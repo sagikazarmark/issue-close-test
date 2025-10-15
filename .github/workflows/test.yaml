@@ -4,4 +4,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello, World!"
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - run: echo "Hello, World!" > hello
+
+      - name: Update PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: ${{ github.ref }}
