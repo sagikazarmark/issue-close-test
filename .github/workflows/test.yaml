@@ -6,10 +6,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - run: echo "Hello, World!" > hello
 
       - name: Update PR
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: ${{ github.ref }}
+          branch: ${{ github.ref_name }}
